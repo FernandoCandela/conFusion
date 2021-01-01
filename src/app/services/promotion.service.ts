@@ -9,14 +9,15 @@ import { PROMOTIONS } from '../shared/promotions';
 export class PromotionService {
 
   constructor() { }
-  getPromotions(): Promotion[]{
+  getPromotions(): Promotion[] {
     return PROMOTIONS;
   }
 
-  getDish(id: String):Promotion{
-    return PROMOTIONS.filter((promotion)=>{promotion.id === id})[0];
+  getPromotion(id: string): Promotion {
+    return PROMOTIONS.filter((promo) => (promo.id === id))[0];
   }
-  getFeaturedDish(): Promotion{
-    return PROMOTIONS.filter((promotion)=> promotion.featured)[0]
+
+  getFeaturedPromotion(): Promotion {
+    return PROMOTIONS.filter((promotion) => promotion.featured)[0];
   }
 }

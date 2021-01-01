@@ -11,14 +11,15 @@ import { PromotionService} from '../services/promotion.service'
 })
 export class HomeComponent implements OnInit {
 
-  dish!:Dish;
-  promotion!:Promotion;
+  dish!: Dish;
+  promotion!: Promotion;
 
-  constructor( private dishService: DishService, private promotionService: PromotionService) { }
+  constructor(private dishservice: DishService,
+    private promotionservice: PromotionService) { }
 
-  ngOnInit(): void {
-    this.dish = this.dishService.getFeaturedDish();
-    this.promotion = this.promotionService.getFeaturedDish();
+  ngOnInit() {
+    this.dish = this.dishservice.getFeaturedDish();
+    this.promotion = this.promotionservice.getFeaturedPromotion();
   }
 
 }
