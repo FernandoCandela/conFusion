@@ -9,6 +9,7 @@ import { PROMOTIONS } from '../shared/promotions';
 export class PromotionService {
 
   constructor() { }
+  
   getPromotions(): Promotion[] {
     return PROMOTIONS;
   }
