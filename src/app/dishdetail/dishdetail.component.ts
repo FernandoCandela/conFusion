@@ -45,7 +45,7 @@ export class DishdetailComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private cm: FormBuilder,
-    @Inject('BaseURL') private BaseURL ) {
+    @Inject('BaseURL') public BaseURL:any ) {
       this.createForm();
     }
 
@@ -113,7 +113,7 @@ export class DishdetailComponent implements OnInit {
       .subscribe(dish => {
         this.dish = dish; this.dishcopy = dish;
       },
-      errmess => { this.dish = null; this.dishcopy = null; this.errMess = <any>errmess; });
+      errmess => { this.dish == null; this.dishcopy == null; this.errMess = <any>errmess; });
     console.log(this.comment);
     this.commentForm.reset({
       rating: 5,
