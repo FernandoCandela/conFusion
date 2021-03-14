@@ -38,8 +38,8 @@
 
   <div fxFlex fxFlexOffset="20px" class="form-size">
     <h3>Send us your Feedback</h3>
-    <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
-    <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+    <!--p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p-->
+    <form novalidate [formGroup]="feedbackForm" #fform="ngForm" [@expand] (ngSubmit)="onSubmit()" [hidden]="(!(feedback) && flag) || (feedback && !(flag))">
       <p>
         <mat-form-field class="half-width">
           <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
@@ -79,6 +79,24 @@
         </p>
         <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">Submit</button>
     </form>
+  </div>
+
+  <div [hidden]="!(feedback)||savedFeedback" [@expand]>
+    <h4>Submitting Form</h4>
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="savedFeedback" [hidden]="flag" [@expand]>
+    <h3>Your Submission</h3>
+    <mat-list>
+      <mat-list-item><p md-line>First Name: {{savedFeedback.firstname}}</p></mat-list-item>
+      <mat-list-item><p md-line>Last Name: {{savedFeedback.lastname}}</p></mat-list-item>
+      <mat-list-item><p md-line>Tel. Number: {{savedFeedback.telnum}}</p></mat-list-item>
+      <mat-list-item><p md-line>Email: {{savedFeedback.email}}</p></mat-list-item>
+      <mat-list-item><p md-line>Contact You?: {{savedFeedback.agree}}</p></mat-list-item>
+      <mat-list-item><p md-line>How?: {{savedFeedback.contacttype}}</p></mat-list-item>
+      <mat-list-item><p md-line>Your Feedback: {{savedFeedback.message}}</p></mat-list-item>
+      </mat-list>
   </div>
 
 </div>
